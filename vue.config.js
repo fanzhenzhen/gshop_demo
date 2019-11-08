@@ -12,6 +12,7 @@ const postcss = px2rem({
 
 module.exports = {
   runtimeCompiler: true,
+  lintOnSave: false, 
   configureWebpack: {// 当前配置需要写入该选项中
     resolve: {
       extensions: ['.js', '.vue', '.json'],
