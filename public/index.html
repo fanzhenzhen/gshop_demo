@@ -13,5 +13,26 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script >
+      function remRefresh() {
+        let clientWidth = document.documentElement.clientWidth
+        let rem = clientWidth/10
+        document.documentElement.style.fontSize = rem +'px'
+         // 设置body的字体大小
+        document.body.style.fontSize = '16px'   
+      }
+      window.addEventListener('pageshow',()=>{
+        remRefresh()
+      })
+      let timeoutId 
+      window.addEventListener('resize',()=>{
+        timeoutId && clearTimeout(timeoutId)
+        timeoutId = setTimeout(() => {
+          remRefresh()
+        }, 100);
+
+      })
+
+    </script>
   </body>
 </html>

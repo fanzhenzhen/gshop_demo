@@ -1,25 +1,31 @@
 <template>
   <div id="app">
     <h1>hello</h1>
-    <HelloWorld/>
+    <div id="div1">hello</div>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+
   }
 }
 </script>
 
-<style  lang="stylus" rel="stylesheet/stylus">
- h1
-   font-size 20px
+<style  lang="stylus" rel="stylesheet/stylus" >
+*
+   margin 0
+   padding 0
+
+h1
+   font-size 20/37.5 rem
    color red
-   
+
+#div1
+   width 10rem
+   background red
+      
 
 </style>
