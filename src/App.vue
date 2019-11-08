@@ -24,7 +24,7 @@ h1
    color red
 
 #div1
-   width 10rem
+   width 375px
    background red
       
 
