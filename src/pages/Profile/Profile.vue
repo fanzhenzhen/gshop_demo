@@ -11,7 +11,7 @@
         <div class="profile_image">
           <i class="iconfont icon-person_round_fill"></i>
         </div>
-        <div class="user-info">
+        <div class="user-info" @click="$router.replace('/login')">
           <p class="user-info-top">登录/注册</p>
           <p>
             <span class="user-icon">
