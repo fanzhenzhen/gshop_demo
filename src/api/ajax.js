@@ -9,7 +9,7 @@ const instance = axios.create({
 
 /* 请求拦截器 */
 instance.interceptors.request.use(config =>{
-  if (config.method.toUpperCase ==='POST' && config.data instanceof Object) {
+  if (config.method.toUpperCase() ==='POST' && config.data instanceof Object) {
        config.data = qs.stringify(config.data)
   }
 
