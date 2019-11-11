@@ -12,11 +12,13 @@
         <form>
           <div :class="{on:!isPassWordLogin}">
             <section class="login_message">
-              <input type="tel" maxlength="11" placeholder="手机号">
+              <input name="phone" v-validate="'required|phone'" type="tel" maxlength="11" placeholder="手机号">
+              <span style="color: red;" v-show="errors.has('phone')">{{errors.first('phone')}}</span>
               <button disabled="disabled" class="get_verification" >获取验证码</button>
             </section>
             <section class="login_verification">
-              <input type="tel" maxlength="8" placeholder="验证码">
+              <input name ="code" v-validate="'required|code'" type="tel" maxlength="8" placeholder="验证码">
+              <span style="color: red;" v-show="errors.has('code')">{{errors.first('code')}}</span>
             </section>
             <section class="login_hint">
               温馨提示：未注册硅谷外卖帐号的手机号，登录时将自动注册，且代表已同意

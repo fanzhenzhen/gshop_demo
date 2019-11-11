@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import 'lib-flexible/flexible'
+import './veevalidate'
 
 import router from './router'
 import GshopHeader from './components/GshopHeader/GshopHeader.vue'
