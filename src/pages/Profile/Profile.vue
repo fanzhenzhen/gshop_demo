@@ -1,19 +1,14 @@
 <template>
   <section class="profile">
-    <!-- <header class="header">
-      <a class="header_title">
-        <span class="header_title_text">我的</span>
-      </a>
-    </header> -->
     <GshopHeader title="我的"/>
     <section class="profile-number">
       <a href="javascript:" class="profile-link">
         <div class="profile_image">
           <i class="icon-person_round_fill"></i>
         </div>
-        <div class="user-info" @click="$router.replace('/login')">
-          <p class="user-info-top" v-if="user.name">{{user.name ?user.name :'登录/注册'}}</p>
-          <p v-if="user.phone">
+        <div class="user-info" @click="toLogin">
+          <p class="user-info-top" v-if="!user.phone">{{user.name ?user.name :'登录/注册'}}</p>
+          <p v-if="!user.name">
             <span class="user-icon">
               <i class="iconfont icon-shouji icon-mobile"></i>
             </span>
@@ -99,10 +94,21 @@
 <script type="text/ecmascript-6">
 import { mapState } from 'vuex'
   export default {
+    mounted(){
+      this.$store.dispatch('getUserAction')
+    },
     computed:{
       ...mapState({
         user:state=>state.user
       })
+    },
+    methods:{
+      toLogin(){
+        if (this.user._id) {
+           return
+        }
+        $router.replace('/login')
+      }
     }
   }
 </script>

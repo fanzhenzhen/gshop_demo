@@ -8,7 +8,8 @@ import {
 import {
   getAddress,
   getCategorys,
-  getShops
+  getShops,
+  autoLogin
   } from '../api'
 
 export default{
@@ -35,5 +36,11 @@ export default{
     commit(SAVE_TOKEN,{token:user.token})
     delete user.token
     commit(SAVE_USER,{user:user})
+  },
+  async getUserAction({commit}){
+    let result = await autoLogin()
+    if (result.code===0) {
+      commit(SAVE_USER,{user:result.data})
+    }
   }
 }
