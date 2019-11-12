@@ -4,7 +4,7 @@
     <section class="profile-number">
       <a href="javascript:" class="profile-link" @click.prevent="toLogin">
         <div class="profile_image">
-          <i class="icon-person_round_fill"></i>
+          <i class="iconfont icon-person_round_fill"></i>
         </div>
         <div class="user-info" >
           <p class="user-info-top" v-if="!user.phone">{{user.name ?user.name :'登录/注册'}}</p>
@@ -88,11 +88,16 @@
         </div>
       </a>
     </section>
+    <section class="profile_my_order border-1px">
+       <mt-button @click="logout" style="width: 100%" type="danger">退出登录</mt-button>
+    </section>
   </section>
 </template>
 
 <script type="text/ecmascript-6">
 import { mapState } from 'vuex'
+import { MessageBox } from 'mint-ui'
+import {LOGOUT} from '../../store/mutation_type'
   export default {
     mounted(){
       this.$store.dispatch('autoLoginAction')
@@ -108,6 +113,16 @@ import { mapState } from 'vuex'
            return
         }
         this.$router.replace('/login')
+      },
+      logout(){
+       MessageBox.confirm('确定退出吗？')
+       .then(
+         actionAgreen=>{
+          this.$store.commit(LOGOUT)
+          this.$router.replace('/login')
+         },
+         actionReject=>console.log('取消退出')
+       )
       }
     }
   }

@@ -3,7 +3,8 @@ import {
   SAVE_CATEGROYS,
   SAVE_SHOPS,
   SAVE_TOKEN,
-  SAVE_USER
+  SAVE_USER,
+  LOGOUT
 } from './mutation_type'
 
 export default{
@@ -23,5 +24,10 @@ export default{
     localStorage.setItem('token_key',token)
     state.token = token
   },
+  [LOGOUT](state){
+    state.user = {}
+    state.token = ''
+    localStorage.removeItem('token_key')
+  }
   
 }
