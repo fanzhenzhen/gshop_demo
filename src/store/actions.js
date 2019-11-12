@@ -37,7 +37,7 @@ export default{
     delete user.token
     commit(SAVE_USER,{user:user})
   },
-  async getUserAction({commit}){
+  async autoLoginAction({commit}){
     let result = await autoLogin()
     if (result.code===0) {
       commit(SAVE_USER,{user:result.data})

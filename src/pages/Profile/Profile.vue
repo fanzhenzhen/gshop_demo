@@ -2,11 +2,11 @@
   <section class="profile">
     <GshopHeader title="我的"/>
     <section class="profile-number">
-      <a href="javascript:" class="profile-link">
+      <a href="javascript:" class="profile-link" @click.prevent="toLogin">
         <div class="profile_image">
           <i class="icon-person_round_fill"></i>
         </div>
-        <div class="user-info" @click="toLogin">
+        <div class="user-info" >
           <p class="user-info-top" v-if="!user.phone">{{user.name ?user.name :'登录/注册'}}</p>
           <p v-if="!user.name">
             <span class="user-icon">
@@ -95,7 +95,7 @@
 import { mapState } from 'vuex'
   export default {
     mounted(){
-      this.$store.dispatch('getUserAction')
+      this.$store.dispatch('autoLoginAction')
     },
     computed:{
       ...mapState({
@@ -107,7 +107,7 @@ import { mapState } from 'vuex'
         if (this.user._id) {
            return
         }
-        $router.replace('/login')
+        this.$router.replace('/login')
       }
     }
   }
@@ -115,7 +115,7 @@ import { mapState } from 'vuex'
 
 <style lang="stylus" rel="stylesheet/stylus" scoped >
   @import "../../common/stylus/mixins.styl"
-  .profile //我的
+ .profile //我的
     width 100%
     .profile-number
       margin-top 45.5px

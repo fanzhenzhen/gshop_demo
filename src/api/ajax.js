@@ -42,7 +42,7 @@ instance.interceptors.response.use(
       }
 
     }
-  
+    console.log('error', error.message)
     /* 中断promise链 */
     return new Promise(()=>{})
   }
