@@ -1,163 +1,31 @@
 <template>
   <div id="goodContainer">
     <div class="leftcontainer">
-      <ul class="nav-list">
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-        <li class="nav-item"><p>爽口凉菜</p></li>
-       
+      <ul class="nav-list" ref="leftUl">
+        <li class="nav-item" @click="leftNavIndex(index)" :class="{active:navIndex === index}" v-for="(good,index) in goods" :key="index"><p>{{good.name}}</p></li>
       </ul>
     </div>
     <div class="rightcontainer">
-         <ul>
-        <li class="food-list-hook">
-          <h1 class="title">折扣</h1>
+         <ul ref="rightUl">
+        <li class="food-list-hook" v-for="(good,index) in goods" :key="index">
+          <h1 class="title">{{good.name}}</h1>
           <ul>
-            <li class="food-item bottom-border-1px">
-              <div class="icon">
+            <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" :key="index">
+               <div class="icon">
                 <img width="57" height="57"
-                     src="http://fuss10.elemecdn.com/8/a6/453f65f16b1391942af11511b7a90jpeg.jpeg?imageView2/1/w/114/h/114">
+                     :src="food.image">
               </div>
               <div class="content">
-                <h2 class="name">南瓜粥</h2>
-                <p class="desc">甜粥</p>
+                <h2 class="name">{{food.name}}</h2>
+                <p class="desc">{{food.description}}</p>
                 <div class="extra">
-                  <span class="count">月售91份</span>
-                  <span>好评率100%</span></div>
+                  <span class="count">月售{{food.sellCount}}份</span>
+                  <span>好评率{{food.rating}}%</span></div>
                 <div class="price">
-                  <span class="now">￥9</span>
+                  <span class="now">￥{{food.price}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <!-- CartControl组件 -->
-                </div>
-              </div>
-            </li>
-            <li class="food-item bottom-border-1px">
-              <div class="icon">
-                <img width="57" height="57"
-                     src="http://fuss10.elemecdn.com/d/22/260bd78ee6ac6051136c5447fe307jpeg.jpeg?imageView2/1/w/114/h/114">
-              </div>
-              <div class="content">
-                <h2 class="name">红豆薏米美肤粥</h2>
-                <p class="desc">甜粥</p>
-                <div class="extra">
-                  <span class="count">月售86份</span>
-                  <span>好评率100%</span>
-                </div>
-                <div class="price">
-                  <span class="now">￥12</span>
-                </div>
-                <div class="cartcontrol-wrapper">
-                  <!-- CartControl组件 -->
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li class="food-list food-list-hook">
-          <h1 class="title">香浓甜粥</h1>
-          <ul>
-            <li class="food-item bottom-border-1px">
-              <div class="icon">
-                <img width="57" height="57" src="http://fuss10.elemecdn.com/6/72/cb844f0bb60c502c6d5c05e0bddf5jpeg.jpeg?imageView2/1/w/114/h/114">
-              </div>
-              <div class="content">
-                <h2 class="name">红枣山药粥</h2>
-                <p class="desc">红枣山药糙米粥,素材包</p>
-                <div class="extra">
-                  <span class="count">月售17份</span>
-                  <span>好评率100%</span>
-                </div>
-                <div class="price">
-                  <span class="now">￥29</span>
-                  <span class="old">￥36</span>
-                </div>
-                <div class="cartcontrol-wrapper">
-                  <!-- CartControl组件 -->
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li class="food-list-hook">
-          <h1 class="title">折扣</h1>
-          <ul>
-            <li class="food-item bottom-border-1px">
-              <div class="icon">
-                <img width="57" height="57"
-                     src="http://fuss10.elemecdn.com/8/a6/453f65f16b1391942af11511b7a90jpeg.jpeg?imageView2/1/w/114/h/114">
-              </div>
-              <div class="content">
-                <h2 class="name">南瓜粥</h2>
-                <p class="desc">甜粥</p>
-                <div class="extra">
-                  <span class="count">月售91份</span>
-                  <span>好评率100%</span></div>
-                <div class="price">
-                  <span class="now">￥9</span>
-                </div>
-                <div class="cartcontrol-wrapper">
-                  <!-- CartControl组件 -->
-                </div>
-              </div>
-            </li>
-            <li class="food-item bottom-border-1px">
-              <div class="icon">
-                <img width="57" height="57"
-                     src="http://fuss10.elemecdn.com/d/22/260bd78ee6ac6051136c5447fe307jpeg.jpeg?imageView2/1/w/114/h/114">
-              </div>
-              <div class="content">
-                <h2 class="name">红豆薏米美肤粥</h2>
-                <p class="desc">甜粥</p>
-                <div class="extra">
-                  <span class="count">月售86份</span>
-                  <span>好评率100%</span>
-                </div>
-                <div class="price">
-                  <span class="now">￥12</span>
-                </div>
-                <div class="cartcontrol-wrapper">
-                  <!-- CartControl组件 -->
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li class="food-list food-list-hook">
-          <h1 class="title">香浓甜粥</h1>
-          <ul>
-            <li class="food-item bottom-border-1px">
-              <div class="icon">
-                <img width="57" height="57" src="http://fuss10.elemecdn.com/6/72/cb844f0bb60c502c6d5c05e0bddf5jpeg.jpeg?imageView2/1/w/114/h/114">
-              </div>
-              <div class="content">
-                <h2 class="name">红枣山药粥</h2>
-                <p class="desc">红枣山药糙米粥,素材包</p>
-                <div class="extra">
-                  <span class="count">月售17份</span>
-                  <span>好评率100%</span>
-                </div>
-                <div class="price">
-                  <span class="now">￥29</span>
-                  <span class="old">￥36</span>
-                </div>
-                <div class="cartcontrol-wrapper">
-                  <!-- CartControl组件 -->
+                  CartControl组件
                 </div>
               </div>
             </li>
@@ -172,18 +40,75 @@
   import BetterScroll from 'better-scroll';
   import {mapState} from 'vuex'
   export default {
+    data(){
+      return {
+        scrollY:0,
+        tops:[]
+      }
+    },
     mounted(){
-      new BetterScroll('.leftcontainer',{
-         scrollY: true, // 设置纵向滑动
-      }),
-       new BetterScroll('.rightcontainer',{
-         scrollY: true, // 设置纵向滑动
-      })
+      if (this.goods) {
+        this._initScroll()
+        this._initTops()
+        
+      }
+    },
+    methods:{
+      _initScroll(){
+        this.leftScroll = new BetterScroll('.leftcontainer',{
+          scrollY: true, // 设置纵向滑动
+          click:true
+        }),
+        this.rightScroll = new BetterScroll('.rightcontainer',{
+          scrollY: true, // 设置纵向滑动
+          probeType: 2, // 实时
+        }),
+        this.rightScroll.on('scroll',({x, y})=>{
+          this.scrollY =Math.abs(y)
+        }),
+        this.rightScroll.on('scrollEnd',({x, y})=>{
+          this.scrollY =Math.abs(y)
+          
+        }) 
+      },
+      _initTops(){
+        let tops = []
+        let top = 0
+        tops.push(top)
+        let lis = Array.from(this.$refs.rightUl.children)
+        for (let index = 0; index < lis.length; index++) {
+          top += lis[index].clientHeight
+          tops.push(top)
+        } 
+        this.tops = tops
+      },
+      leftNavIndex(index){
+        this.scrollY = this.tops[index]
+        this.rightScroll.scrollTo(0, -this.scrollY, 2000)
+      }
     },
     computed:{
       ...mapState({
         goods:state=>state.shop.shopDatas.goods
-      })
+      }),
+      navIndex(){
+        let {tops ,scrollY} = this
+        let index = tops.findIndex((top,index)=> scrollY >= top && scrollY < tops[index + 1])
+        /* 性能优化 */
+        if (this.leftScroll && this.index !== index) {
+          this.index = index
+          this.leftScroll.scrollToElement(this.$refs.leftUl.children[index],1000)                    
+        }
+        return index
+      }
+    },
+    watch:{
+      goods(newValue, oldValue){
+        this.$nextTick(()=>{ // 页面下一次全部渲染完毕
+          this._initScroll()
+          this._initTops()
+        })
+      }
     }
   }
 </script>
@@ -196,11 +121,15 @@
     height calc(100vh - 224px)
     .leftcontainer
       width 80px
+      background #f3f5f7
       .nav-list
         .nav-item
           text-align center
           height 40px
           line-height 40px
+          &.active
+            color green
+            background #fff
           p
             width 70px
             margin 0 auto

@@ -10,7 +10,6 @@ import * as API from './api'
 import {Button} from 'mint-ui'
 import './mock/mockServer'
 
-// 注册全局组件
 Vue.config.productionTip = false
 //定义一个全局的组件
 Vue.component('GshopHeader',GshopHeader)
