@@ -59,3 +59,8 @@ export const autoLogin = ()=>ajax({
     hasToken:true
   }
 })
+
+/* 获取shop数据 */
+export const getShopDatas = ()=>ajax({
+  url:'/shopdatas'
+})

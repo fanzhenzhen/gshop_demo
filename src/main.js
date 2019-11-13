@@ -8,6 +8,7 @@ import GshopHeader from './components/GshopHeader/GshopHeader.vue'
 import store from './store'
 import * as API from './api'
 import {Button} from 'mint-ui'
+import './mock/mockServer'
 
 // 注册全局组件
 Vue.config.productionTip = false

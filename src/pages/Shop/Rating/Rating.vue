@@ -5,7 +5,13 @@
 </template>
 
 <script type="text/ecmascript-6">
+import {mapState} from 'vuex'
   export default {
+     computed:{
+      ...mapState({
+        ratings:state=>state.shop.shopDatas.ratings
+      })
+    }
   }
 </script>
 
