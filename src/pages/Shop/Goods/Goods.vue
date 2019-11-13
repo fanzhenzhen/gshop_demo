@@ -25,7 +25,7 @@
                   <span class="now">￥{{food.price}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  CartControl组件
+                  <CartControl :food ='food'/>
                 </div>
               </div>
             </li>
@@ -62,6 +62,7 @@
         this.rightScroll = new BetterScroll('.rightcontainer',{
           scrollY: true, // 设置纵向滑动
           probeType: 2, // 实时
+          click:true
         }),
         this.rightScroll.on('scroll',({x, y})=>{
           this.scrollY =Math.abs(y)

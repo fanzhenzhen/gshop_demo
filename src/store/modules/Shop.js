@@ -1,4 +1,9 @@
-import {SAVE_SHOPDATAS} from '../mutation_type'
+import {
+  SAVE_SHOPDATAS,
+  ADD_FOOD_COUNT,
+  DEL_FOOD_COUNT
+} from '../mutation_type'
+import Vue from 'vue'
 import {getShopDatas} from '../../api'
 
 const state = {
@@ -7,6 +12,19 @@ const state = {
 const mutations ={
  [SAVE_SHOPDATAS](state,{shopDatas}){
    state.shopDatas = shopDatas
+ },
+ [ADD_FOOD_COUNT](state,{food}){
+   if (food.count) {
+     food.count++
+   }else{
+    Vue.set(food,'count',1)
+   }
+ 
+ },
+ [DEL_FOOD_COUNT](state,{food}){
+   if (food.count) {
+    food.count--   
+   }
  }
 }
 const actions = {
