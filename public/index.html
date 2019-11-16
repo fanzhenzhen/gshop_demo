@@ -14,9 +14,15 @@
     <noscript>
       <strong>We're sorry but gshop doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.js"></script>
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script >
+      if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body);
+        }, false);
+      }
       // function remRefresh() {
       //   let clientWidth = document.documentElement.clientWidth
       //   let rem = clientWidth/10

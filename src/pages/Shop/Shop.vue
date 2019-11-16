@@ -18,14 +18,44 @@
 
 <script type="text/ecmascript-6">
 import  ShopHeader from '../../components/ShopHeader/ShopHeader'
+import {mapState} from 'vuex'
+import {SAVE_SHOPDATAS,SAVE_CARTSHOPS} from '../../store/mutation_type'
   export default {
     components:{
       ShopHeader
     },
+    computed:{
+      ...mapState({
+        shopDatas: state => state.shop.shopDatas,
+        shopCarts: state => state.shop.shopCarts
+      })
+    },
     mounted(){
-      this.$store.dispatch('getShopDatasAction')
-    }
+      if (sessionStorage.getItem('shopDatas')) {
+
+        let shopDatas = JSON.parse(sessionStorage.getItem('shopDatas'))
+
+        let shopCarts = shopDatas.goods.reduce((pre, good) => {
+          pre.push(...good.foods.filter(food => food.count))
+          return pre
+        }, [])
+        this.$store.commit(SAVE_SHOPDATAS,{shopDatas})
+        this.$store.commit(SAVE_CARTSHOPS,{shopCarts})
+        
+      }else{
+
+        this.$store.dispatch('getShopDatasAction')
+      }
+       window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('shopDatas',JSON.stringify(this.shopDatas))
+      })
+    },
+     beforeDestroy(){
+      console.log('beforeDestroy')
+      sessionStorage.setItem('shopDatas',JSON.stringify(this.shopDatas))
+   }
   }
+  
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
