@@ -1,4 +1,4 @@
-# gshopVu
+# gshop
 ## Vue项目
 
 ## Project setup
